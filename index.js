@@ -26,15 +26,32 @@ restService.post("/echo", function(req, res) {
     req.body.result.parameters.echoText
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
-  return res.json({
-    "fulfillmentText": "displayed&spoken response",
-    "fulfillmentMessages": [
-      {
-        "text": 
-        [ "text response" ],
-      }
-    ],
+    return res.json({
+    "queryResult": {
+      "queryText": "hola",
+      "parameters": {
+        "geo-city": ""
+      },
+      "allRequiredParamsPresent": true,
+      "fulfillmentText": "Bienvenido al echo service escrbe algo la csm",
+      "fulfillmentMessages": [
+        {
+          "text": {
+            "text": [
+              "Bienvenido al echo service escrbe algo la csm"
+            ]
+          }
+        }
+      ],
+      "intent": {
+        "name": "projects/botvendemas/agent/intents/e8b19fd4-6188-40fd-b7bf-0921b6cfce3a",
+        "displayName": "Default Intent"
+      },
+      "intentDetectionConfidence": 1,
+      "languageCode": "es"
+    }
   });
+  
 });
 
 restService.post("/audio", function(req, res) {
